@@ -1,6 +1,7 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -122,6 +123,8 @@ public class Prueba {
 		this.lugar = lugar;
 	}
 
+		
+	
 	/**
 	 * Función que establece el equipo arbitral de la prueba (3 colegiados)
 	 * 
@@ -200,12 +203,6 @@ public class Prueba {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Prueba [id=" + id + ", nombre=" + nombre + ", fecha=" + fecha + ", individual=" + individual
-				+ ", lugar=" + lugar + ", arbitraje=" + Arrays.toString(arbitraje) + ", resultado=" + resultado
-				+ ", participantes=" + Arrays.toString(participantes) + "]";
-	}
 
 	// Ejercicio 2, parte B
 	public static Prueba nuevaPrueba() {
@@ -253,5 +250,20 @@ public class Prueba {
 		ret = new Prueba(id, nombre, fecha, lugar, ind);
 		return ret;
 	}
+
+	
+
+	@Override
+	public String toString() {
+		String ret;
+		ret=  this.id + "." + this.nombre + "(" +  "fecha=" + fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+ 
+				"en"+ this.lugar+ ")" + "de tipo" + "individual/colectiva" ;
+		
+		
+		return ret	;
+	}
+		
+
+	
 
 }

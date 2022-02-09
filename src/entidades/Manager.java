@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -109,7 +110,7 @@ public class Manager {
 	}
 
 	public String data() {
-		return "" + id + "|" + persona.getNombre() + "|" + persona.getNifnie().mostrar() + "|" + persona.getFechaNac()
+		return "" + id + "|" + persona.getNombre() + "|" + persona.getNifnie().mostrar() + "|" + persona.getFechaNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 				+ "|" + persona.getTelefono() + "|" + this.id + "|" + this.telefono + "|" + this.direccion;
 	}
 
