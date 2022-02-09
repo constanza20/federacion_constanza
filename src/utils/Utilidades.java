@@ -204,25 +204,5 @@ public class Utilidades {
 		float ret = (float) 0.0 ;
 		boolean correcto = false;
 		return ret;
-		Scanner in;
-		
-		do {
-			System.out.println("introducir valor decimal");
-			in = new Scanner(System.in, "ISO-8859-1");
-		
-		    try {
-		    	
-		    	ret = in.nextFloat();
-		    	correcto = true;
-			
-		    }catch (Exception exc) {
-		
-			System.out.println("valor introducido no valido ");
-			correcto =false;
-			
-		} 
-		
-	} while (!correcto);
-		return ret;
 	}
 }
