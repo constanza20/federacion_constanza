@@ -1,6 +1,12 @@
 package entidades;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import utils.Datos;
@@ -58,14 +64,14 @@ public class Manager {
 	}
 
 	public static Manager nuevoManager() {
-	
+
 		Manager ret = null;
 		Scanner in;
 		long id = -1;
 		String nombre = "";
 		String tfn = "";
 		boolean valido = false;
-		
+
 		do {
 			System.out.println("Introduzca el id del nuevo Manager:");
 			in = new Scanner(System.in);
@@ -74,7 +80,7 @@ public class Manager {
 				valido = true;
 		} while (!valido);
 		valido = false;
-		
+
 		do {
 			System.out.println("Introduzca el nombre del nuevo Manager:");
 			in = new Scanner(System.in);
@@ -82,7 +88,7 @@ public class Manager {
 			if (nombre.length() > 3)
 				valido = true;
 		} while (!valido);
-		
+
 		do {
 			System.out.println("Introduzca el telefono del nuevo Manager:");
 			in = new Scanner(System.in);
@@ -92,8 +98,8 @@ public class Manager {
 		} while (!valido);
 		System.out.println("Introduzca la fecha de nacimiento del Manager");
 		LocalDate fecha = Utilidades.leerFecha();
-	
-	return ret;
+
+		return ret;
 	}
 
 	@Override
@@ -102,8 +108,40 @@ public class Manager {
 				+ "]";
 	}
 
+	public String data() {
+		return "" + id + "|" + persona.getNombre() + "|" + persona.getNifnie().mostrar() + "|" + persona.getFechaNac()
+				+ "|" + persona.getTelefono() + "|" + this.id + "|" + this.telefono + "|" + this.direccion;
+	}
+
 	
 	
-	
+	 private static void exportarManagers(Manager[] managers) {
+	        String path = "managers.txt";
+	        File fichero = new File(path);
+	        FileWriter escritor = null;
+	        PrintWriter buffer = null;
+	        try {
+	            try {
+	                escritor = new FileWriter(fichero, false);
+	                buffer = new PrintWriter(escritor);
+	                for (Manager m : managers) {
+	                        buffer.println(m.data());
+	                }
+	            } finally {
+	                if (buffer != null) {
+	                    buffer.close();
+	                }
+	                if (escritor != null) {
+	                    escritor.close();
+	                }
+	            }
+	        } catch (FileNotFoundException e) {
+	            System.out.println("Se ha producido una FileNotFoundException" + e.getMessage());
+	        } catch (IOException e) {
+	            System.out.println("Se ha producido una IOException" + e.getMessage());
+	        } catch (Exception e) {
+	            System.out.println("Se ha producido una Exception" + e.getMessage());
+	        }
+	    }
 
 }
