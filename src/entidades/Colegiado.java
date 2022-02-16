@@ -1,9 +1,15 @@
 package entidades;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import utils.Datos;
+import utils.Utilidades;
 
 public class Colegiado {
 	private long id;
@@ -83,12 +89,8 @@ public class Colegiado {
 		return ret;
 	}
 
-	@Override
-	public String toString() {
-		return "Colegiado [id=" + id + ", categoria=" + categoria + ", persona=" + persona + "]";
-	}
 
-	
+	    
 	
 
 }
