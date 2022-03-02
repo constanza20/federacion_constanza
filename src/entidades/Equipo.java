@@ -1,6 +1,7 @@
 package entidades;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Equipo extends Participante {
 	private long idEquipo;
@@ -63,6 +64,38 @@ public class Equipo extends Participante {
 		ret += "Valido durante el " + anioinscripcion;
 		return ret;
 	}
+	
+	
+	public static Equipo nuevoEquipo() {
+		  
+	    Equipo ret = null;
+		long id = -1;
+		int anioinscripcion;
+		DatosPersona dp = null;
+		Scanner in;
+		boolean valido = false;
+		do {
+			System.out.println("Introduzca el id del nuevo atleta:");
+			in = new Scanner(System.in);
+			id = in.nextInt();
+			if (id > 0)
+				valido = true;
+			else
+				System.out.println("Valor incorrecto para el identificador.");
+		} while (!valido);
+
+		valido = false;
+
+
+		System.out.println("Introduzca ahora los datos personales:");
+		in = new Scanner(System.in);
+		dp = DatosPersona.nuevaPersona();
+
+		
+		return ret;
+	}
+	
+	
 
 
 }
